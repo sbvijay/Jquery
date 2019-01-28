@@ -1,0 +1,45 @@
+h1,p,ul,li{
+    margin:0px;
+    padding:0px;
+}
+.row{
+    margin:0px;
+    padding:0px;
+}
+.pad0{
+    padding:0px;
+}
+.modal-content{
+background-color: #282B2C;
+
+}
+.modal-header .modal-title
+{
+    font-family: "gotham-book";	
+    font-size: 20px;	
+    letter-spacing: 0.15px;	
+    line-height: 23px;
+    color: #FFFFFF;
+}
+.modal-header{
+    padding:0px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #979797;
+}
+.modal-header .close {
+    margin-top: -42px;
+    margin-right: -48px;
+    text-shadow: none;
+    opacity: unset;
+    height: 45px;
+    width: 45px;
+    font-weight: 100;
+    outline: 0;
+}
+.modal-header button.close{
+    color:#FFFFFF;
+    background-color: #181818;
+}
+.modal-body{
+    padding:0px;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link ref="text/css" href="assets/add-delete.css">
+<script>
+$(document).ready(function(){
+    // onload
+        $(".update-btn").addClass("hide");
+        $("#mytable").append(
+        "<tr>" +
+        "<td>Vijay</td>" +
+        "<td>Sachin</td>" +
+        "<td>8940473703</td>" +
+        "<td>Kumbakonam</td>" +
+        "<td><button class='remove'>Remove</button></td>" +
+        "<td><button class='edit'>Edit</button></td>" +
+        "</tr>"
+        );
+        $("#mytable").append(
+        "<tr>" +
+        "<td>XXX</td>" +
+        "<td>YYY</td>" +
+        "<td>1234567890</td>" +
+        "<td>Bangalore</td>" +
+        "<td><button class='remove'>Remove</button></td>" +
+        "<td><button class='edit'>Edit</button></td>" +
+        "</tr>"
+        );
+    // Submit
+    $("#submit").click(function(){
+        //  if($("#myform").val() == ''){    
+        //     $(".message").text("Input type cannot be empty");
+        //  }
+        //  else{
+        //      alert("else work");
+        var first_name=$("#firstname").val();
+        var last_name=$("#lastname").val();
+        // var gender=$("#gender").val();
+        var phone_number=$("#phonenumber").val();
+        var address=$("#address").val();
+        $('#myModal').modal('hide');
+        $("#mytable").append("<tr><td>"+first_name+"</td><td>"+last_name+"</td><td>"+phone_number+"</td><td>"+address+"</td><td><button class='remove'>Remove</button></td><td><button class='edit'>Edit</button></td></tr>");
+        $("#myform")[0].reset();
+        //  }
+    })
+    // Remove
+    $( "#mytable" ).on( "click", ".remove", function() {
+        $(this).parents( "tr" ).remove();
+     });
+    //  Edit
+     $( "#mytable" ).on( "click", ".edit", function() {
+        $('#myModal').modal('show'); 
+        var firstName = $(this).closest("tr").find("td:eq(0)").text();
+        var lastName = $(this).closest("tr").find("td:eq(1)").text();
+        var phoneNumber = $(this).closest("tr").find("td:eq(2)").text();
+        var addresS = $(this).closest("tr").find("td:eq(3)").text();
+        $("#firstname").val(firstName);
+        $("#lastname").val(lastName);
+        $("#phonenumber").val(phoneNumber);
+        $("#address").val(addresS);
+        $(".update-btn").removeClass("hide");
+        $(".add-btn").addClass("hide");
+     });
+     $("#update").click(function(){
+        var firstName=$("#firstname").val();
+        var lastName=$("#lastname").val();
+        var phoneNumber=$("#phonenumber").val();
+        var addresS=$("#address").val();
+        $("#mytable").find("td:eq(0)").text(firstName);
+        $("#mytable").find("td:eq(1)").text(lastName);
+        $("#mytable").find("td:eq(2)").text(phoneNumber);
+        $("#mytable").find("td:eq(3)").text(addresS);
+        $('#myModal').modal('hide');
+        // $(this).closest("tr").find("td:eq(0)").text(firstName);
+        // $(this).closest("tr").find("td:eq(1)").text(lastName);
+        // $(this).closest("tr").find("td:eq(2)").text(phoneNumber);
+        // $(this).closest("tr").find("td:eq(3)").text(addresS);   
+        // alert("Updated");
+        //  $("#mytable").append("<tr><td>"+firstName+"</td><td>"+lastName+"</td><td>"+phoneNumber+"</td><td>"+addresS+"</td><td><button class='remove'>Remove</button></td><td><button class='edit'>Edit</button></td></tr>");
+    });
+});
+</script>
+</head> 
+<body>
+    <a data-toggle="modal" data-target="#myModal">ADD USER</a>
+    <div class="warranty-modal">
+        <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">USER REGISTRATION FORM</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="myform">
+                        First name:
+                        <input type="text" id="firstname"><br>
+                        Last name:
+                        <input type="text"  id="lastname"><br>
+                        <!-- Gender:
+                        <input type="radio"  value="male" id="gender" checked > Male
+                        <input type="radio" value="female" id="gender"> Female<br> -->
+                        Phone Number:
+                        <input type="text"  id="phonenumber"><br>
+                        Address:
+                        <input type="text" id="address"></textarea><br>
+                        <p class="message"> </p>
+                    </form> 
+                    <button id="submit" class="add-btn">Add</button>
+                    <button id="update" class="update-btn">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <table id="mytable">
+        <thead>
+            <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <!-- <th>Gender</th> -->
+            <th>Phone Number</th>
+            <th>Location</th>
+            <th>Remove</th>
+            <th>Edit</th>
+            </tr>
+        </thead>
+    </table>
+</body>
+</html>
